@@ -7,11 +7,10 @@ const saleschema = new mongoose.Schema({
         type: String,
         required: true
     },
-    productId: {
+    productid: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Product',
         required: true,
-        unique: true
     },
     category:String,
     quantity: {

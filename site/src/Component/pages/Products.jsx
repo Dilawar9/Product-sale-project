@@ -68,10 +68,11 @@ function Products() {
             </div>
             <div>
               <label for="first_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gategory</label>
-              <select id="state"  onChange={(e) => { setCategory(e.target.value) }} className='w-full' >
+              <select id="state" value={category} onChange={(e) => { setCategory(e.target.value) }} className='w-full' >
+              <option >select</option>
                 {
                   categories.map((cat) => {
-                    return <option key={cat._id} value={cat.category}>{cat.category}</option>
+                    return <option key={cat._id} >{cat.category}</option>
                   })
                 }
 

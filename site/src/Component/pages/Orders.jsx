@@ -9,8 +9,9 @@ function Orders() {
   
 
   useEffect(() => {
-    axios.get("http://localhost:4001/user/login").then((res) => {
-      setUser(res.data.id);
+    axios.get("http://127.0.0.1:4001/user/login").then((res) => {
+      // setUser(res.data.ObjectID);
+      console.log(res.data.email);
     })
   }, [])
 
@@ -19,7 +20,7 @@ function Orders() {
       alert('Please Enter Data')
     } else {
 
-      axios.post('http://localhost:4001/orders/create', {
+      axios.post('http://localhost:4001/shop/place-order', {
         userid: userid,
         total: total,
         status: status
@@ -46,7 +47,7 @@ function Orders() {
             <h1 className='mb-3 text-center font-bold text-3xl '>Create Order</h1>
             <div>
               <label for="first_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User ID</label>
-              <select id="state"  onChange={(e) => { setUserid(e.target.value) }} className='w-full' >
+              <select id="state" value={userid}  onChange={(e) => { setUserid(e.target.value) }} className='w-full' >
                 {
                   user.map((cat) => {
                     return <option key={cat._id} value={cat._id}>{cat._id}</option>
@@ -65,7 +66,7 @@ function Orders() {
               <label for="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
               <input type="text" id="small-input"  value={status} onChange={(e)=>{setStatus(e.target.value)}} className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </div>
-          <button label="submit" className='bg-blue-600 p-3 rounded-xl mt-3' onClick={hamdelbtn}>Submit</button>
+          <button label="submit" className='bg-blue-600 p-3 rounded-xl mt-3' onClick={hamdelbtn}>Add TO Card</button>
         </form>
       </div>
     </>

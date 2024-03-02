@@ -15,7 +15,7 @@ function Orderitem() {
             alert('Empty Field')
         } else {
 
-            axios.post('http://localhost:4001/orders/create', {
+            axios.post('http://localhost:4001/shop/place-order', {
                 orderid: orderid,
                 price: price,
                 quantity: quantity,

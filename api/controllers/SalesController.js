@@ -9,13 +9,13 @@ const salecreate = async (req, res) => {
 
         const newsale = await Sales.create({
             customer: req.body.customer,
-            product: req.body.product,
+            productid: req.body.productid,
             quantity: req.body.quantity,
             price: req.body.price,
             category: req.body.category,
             discount: req.body.discount,
             total: req.body.total,
-            order: req.body.order
+            saleorder: req.body.saleorder
         });
 
         return res.status(200).json({
