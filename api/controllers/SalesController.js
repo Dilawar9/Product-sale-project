@@ -6,26 +6,27 @@ const salecreate = async (req, res) => {
     console.log('22222')
 
     try {
-
+        
         const newsale = await Sales.create({
-            customer: req.body.customer,
-            productid: req.body.productid,
-            quantity: req.body.quantity,
-            price: req.body.price,
-            category: req.body.category,
-            discount: req.body.discount,
-            total: req.body.total,
-            saleorder: req.body.saleorder
-        });
+        customer: req.body.customer,
+        productid: req.body.productid, 
+        quantity: req.body.quantity,
+        price: req.body.price,
+        category: req.body.category,
+        discount: req.body.discount,
+        total: req.body.total,
+        saleorder: req.body.saleorder
+       
+    });
 
-        return res.status(200).json({
-            status: 'success',
-            message: "successfully created",
-            newsale: newsale
-        })
-    } catch (error) {
-        console.log(error.message);
-    }
+    return res.status(200).json({
+        status: 'success',
+        message: "successfully created",
+        newsale: newsale
+    })
+} catch (error) {
+    console.log(error.message);
+}
 }
 //get all sales
 

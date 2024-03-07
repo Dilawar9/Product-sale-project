@@ -20,6 +20,7 @@ function Products() {
 
   useEffect(() => {
     axios.get("http://localhost:4001/category/getall").then((res) => {
+      console.log(res.data.categories,"check ")
       setCategories(res.data.categories);
     })
   }, [])
@@ -30,7 +31,7 @@ function Products() {
     } else {
 
       axios.post('http://localhost:4001/product/create', {
-        name: name,
+        productname: name,
         description: description,
         category: category,
         quantity: quantity,
@@ -45,7 +46,14 @@ function Products() {
         .then( (res)=> {
           console.log(res.data)
           if (res.data.status == "success") {
-            alert("Product Add Successfully")
+            // alert("Product Add Successfully")
+            alert(res.data.message);
+            setName("");
+            setDescription("");
+            setCategory("");
+            setQuantity("");
+            setPrice("");
+            setImage("");
             // navigate('/')
           }
         })
@@ -63,7 +71,7 @@ function Products() {
           <div className="grid gap-6 mb-6 md:grid-cols-1 m-5">
             <h1 className='text-center font-bold text-3xl'>Product Create</h1>
             <div>
-              <label for="name" className="block mb-2 text-sm  font-medium text-gray-900 dark:text-white">Name</label>
+              <label for="name" className="block mb-2 text-sm  font-medium text-gray-900 dark:text-white">Product-Name</label>
               <input type="text" value={name} onChange={(e)=>{setName(e.target.value)}} id="small-input" className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </div>
             <div>
@@ -72,7 +80,7 @@ function Products() {
               <option >select</option>
                 {
                   categories.map((cat) => {
-                    return <option key={cat._id} >{cat.category}</option>
+                    return <option key={cat._id} value={cat.maincategory} >{cat.maincategory}</option>
                   })
                 }
 

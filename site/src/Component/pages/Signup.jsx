@@ -13,25 +13,32 @@ function Signup() {
     const navigator = useNavigate();
 
     const onSubmit = () => {
-        if (name === "" || email === "" || password === "")
-        {
+        if (name === "" || email === "" || password === "") {
             alert("Please Enter Data")
-        } else{
+        } else {
             axios.post("http://localhost:4001/user/signup", {
                 name: name,
                 email: email,
                 password: password
             }).then((res) => {
-                console.log(res.data);
-                if (res.data.status == "success") {
+                if (res.data.status === "success") {
                     localStorage.setItem("token", res.data.token);
-                    navigator("/")
-                } else {
-                    alert("not logged in")
+                    alert("Sign Up Successfully!");
+                    setEmail("");
+                    setName("");
+                    setPassword("");
+                } else if (res.data.status === "failed") {
+                    alert(res.data.message)
+                    setEmail("");
+                    setName("");
+                    setPassword("");
+                    navigator("/signup")
                 }
+            }).catch((error) => {
+                alert(error.message)
             })
-        }                                                                                                                                                                                                                                                                                                                                                                                                                                                       
-        
+        }
+
     }
 
     return (
@@ -169,4 +176,4 @@ function Signup() {
     )
 }
 
-export default Signup
+export default Signup;

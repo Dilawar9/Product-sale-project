@@ -19,32 +19,35 @@ function Sales() {
   useEffect(() => {
     axios.get("http://127.0.0.1:4001/product/getall").then((res) => {
       setProducts(res.data.product);
-      console.log(res.data.product);
-      return;
     })
   }, [])
 
 
 
   const hamdelbtn = () => {
-    if (customer == '' || price == '' || productid == '' || quantity == '' || total == '' || discount == '' || salestatus == '') {
+    if (customer == '' || price == '' || quantity == '' || total == '' || discount == '' || salestatus == '') {
       alert('Please Enter Data')
     } else {
 
-      axios.post('http://localhost:4001/sale/create', {
+      axios.post(`http://localhost:4001/sale/create`, {
         customer: customer,
         price: price,
+        productid:productid,
         quantity: quantity,
-        productid: productid,
         total: total,
         discount: discount,
         order_status: salestatus
-
       })
         .then((res) => {
           console.log(res.data)
           if (res.data.status == "success") {
             alert("Sale Create Successfully")
+            setCustomer("");
+            setPrice("");
+            setQuantity("");
+            setTotal("");
+            setDiscount("");
+            setSalestatus("");
             // navigate('/')
           }
         })
@@ -72,7 +75,7 @@ function Sales() {
               <option >select</option>
               {
                 products.map((product) => {
-                  return <option key={product._id} value={product._id}>{product.name}</option>
+                  return <option key={product._id} value={product._id}>{product.productname}</option>
                 })
               }
             </select>

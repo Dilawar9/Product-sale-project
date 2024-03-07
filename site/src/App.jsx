@@ -12,6 +12,8 @@ import Orderitem from './Component/pages/Orderitem'
 import Category from './Component/pages/Category'
 import Expens from './Component/pages/Expens'
 import Report from './Component/pages/Report'
+import Subcategory from './Component/pages/Subcategory'
+import Logout from './Component/pages/Logout'
 // import Navebar from './Component/navebar/Navebar'
 
 
@@ -27,23 +29,15 @@ function App() {
           <Route path='/products' element={<Products/>}/>
           <Route path='/signup' element={<Signup/>}/>
           <Route path='/login' element={<Login/>}/>
+          <Route path='/logout' element={<Logout/>}/>
           <Route path='/sales' element={<Sales/>}/>
           <Route path='/order' element={<Orders/>}/>
           <Route path='/oreritem' element={<Orderitem/>}/>
           <Route path='/expens' element={<Expens/>}/>
           <Route path='/category' element={<Category/>}/>
+          <Route path='/subcategory' element={<Subcategory/>}/>
           <Route path='/report' element={<Report/>}/>
         </Route>
-        {/* <Route path='/home'>{<Home/>}</Route> */}
-        {/* <Route path='/product'>{<Products/>}</Route>
-        <Route path='/signup'>{<Signup/>}</Route>
-        <Route path='/login'>{<Login/>}</Route>
-        <Route path='/sales'>{<Sales/>}</Route>
-        <Route path='/orders'>{<Orders/>}</Route>
-        <Route path='/oreritem'>{<Orderitem/>}</Route>
-        <Route path='/expens'>{<Expens/>}</Route>
-        <Route path='/category'>{<Category/>}</Route>
-        <Route path='/report'>{<Report/>}</Route> */}
       </Routes>
     </>
   )

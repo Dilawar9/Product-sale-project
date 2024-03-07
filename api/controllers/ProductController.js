@@ -48,7 +48,7 @@ console.log('22222')
         }
 
         const newproduct = await Product.create({
-            name: req.body.name,
+            productname: req.body.productname,
             description: req.body.description,
             price: req.body.price,
             category: req.body.category,

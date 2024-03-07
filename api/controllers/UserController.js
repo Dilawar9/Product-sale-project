@@ -9,24 +9,24 @@ const signup = async (req, res) => {
 
         // Checking if the user already exists in the database
         const arleadyUser = await User.findOne({ email: email });
+
         if (arleadyUser) {
-            return res.status(409).json({ status: "failed", message: "Email is already registered" })
+            return res.json({ status: "failed", message: "Email is already registered" })
         }
 
         //  Encrypting the password using Bcrypt
-        const salt = await bcrypt.genSalt(10);
-        console.log(salt)
+        // const salt = await bcrypt.genSalt(10);
+        // console.log(salt)
         hashed = await bcrypt.hash(password, 10);
-        console.log(hashed)
+
         //  Creating a new user with encrypted password and saving it to the database
         const user = await User.create({ name, email, password: hashed });
 
         //  Sending back a response with a status of Created (201) and the newly created
-       return res.status(201).json({ name: user.name, email: user.email, token: generateToken(user) });
+       return res.json({ name: user.name, email: user.email, token: generateToken(user) ,status:"success"});
 
     } catch (error) {
-        console.log(`Error in SignUp ${error}`);
-        res.status(500).json({ status: 'Failed', message: error.message });
+        res.json({ status: 'Failed', message: error.message });
     }
 }
 
@@ -38,17 +38,17 @@ const login = async (req, res) => {
         // checking user is registered or not
         const user = await User.findOne({ email: email });
         if (!user) {
-            return res.status(401).json({ status: 'failed', message: 'Invalid Email or Password' });
+            return res.json({ status: 'failed', message: 'Invalid Email or Password' });
         }
 
         // Verify the password using bcrypt compare method
         const validPassword = await bcrypt.compare(password, user.password);
         if (!validPassword) {
-            return res.status(401).json({ status: 'failed', message: "Invalid Email or Password" })
+            return res.json({ status: 'failed', message: "Invalid Email or Password" })
         }
 
         // success
-        return res.status(200).json({
+        return res.json({
             status: 'success',
             token: generateToken(user)
         })

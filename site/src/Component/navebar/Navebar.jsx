@@ -122,7 +122,15 @@ function Navebar() {
                         <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                       </ListItemPrefix> */}
                       <Link to='/category'>
-                        Category
+                        Main-Category
+                      </Link>
+                    </ListItem>
+                    <ListItem>
+                      {/* <ListItemPrefix>
+                        <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                      </ListItemPrefix> */}
+                      <Link to='/subcategory'>
+                        Sub-Category
                       </Link>
                     </ListItem>
                     <ListItem>
@@ -161,26 +169,28 @@ function Navebar() {
                 Settings
               </ListItem>
               <ListItem>
-                <ListItemPrefix>
+                {/* <ListItemPrefix>
                   <PowerIcon className="h-5 w-5" />
-                </ListItemPrefix>
+                </ListItemPrefix> */}
                 <Link to='/signup'>
                   Signup
                 </Link>
               </ListItem>
               <ListItem>
-                <ListItemPrefix>
+                {/* <ListItemPrefix>
                   <PowerIcon className="h-5 w-5" />
-                </ListItemPrefix>
+                </ListItemPrefix> */}
                 <Link to='/login'>
                   Login
                 </Link>
               </ListItem>
               <ListItem>
-                <ListItemPrefix>
+                {/* <ListItemPrefix>
                   <PowerIcon className="h-5 w-5" />
-                </ListItemPrefix>
+                </ListItemPrefix> */}
+                <Link to="/logout">
                 Log Out
+                </Link>
               </ListItem>
             </List>
           </Card>
